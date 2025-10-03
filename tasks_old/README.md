@@ -1,0 +1,12 @@
+- Pranayama
+- Vipassana
+- Yoga
+- Neti
+- Ziola
+- Kalestenika
+- Porzadek w pokoju
+- Pisanie
+- Orbitrek + Hiszpanski
+- Porzadek w piwnicy
+- Gitara
+- Ksiazka 
