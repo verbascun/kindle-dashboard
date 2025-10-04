@@ -54,7 +54,7 @@ Dashboard.updateMoon = function() {
   // Image
   var img = document.createElement('img');
   img.className = 'moon';
-  img.src = '/icons/moon/' + phaseData.svg;
+  img.src = 'icons/moon/' + phaseData.svg;
   img.alt = phaseData.labelEn;
   container.appendChild(img);
 
