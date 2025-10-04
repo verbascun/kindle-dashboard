@@ -6,6 +6,8 @@
   if (Dashboard.updateWeather) Dashboard.updateWeather();
   if (Dashboard.updateMoon) Dashboard.updateMoon();
 
+  
+
   // Intervals
   if (Dashboard.updateClock) setInterval(Dashboard.updateClock, 30*1000);        // clock every 30 sec
   if (Dashboard.checkDST) setInterval(Dashboard.checkDST, 60*60*1000);           // DST every hour

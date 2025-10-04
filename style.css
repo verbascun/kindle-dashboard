@@ -15,7 +15,7 @@ html {
 body {
     height: 100%;
     width: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
     font-family: Arial, sans-serif;
     /* background-color: #f9f9f9; */
 
@@ -41,6 +41,7 @@ img#home_icon {
 
 div {
     width: 100%;
+    text-align: center;
 }
 
 
@@ -57,6 +58,7 @@ ul {
 
 #clock-weather {
     text-align: center;
+    width: 100%;
     border-bottom:  2px solid black;
 }
 
@@ -72,6 +74,7 @@ ul {
     font-size: 2rem;
     text-align: center;
     width: 26%;
+    vertical-align: middle; 
 }
 
 #current-wind-speed {
@@ -79,17 +82,19 @@ ul {
     font-size: 2rem;
     text-align: center;
     width: 26%;
+    vertical-align: middle; 
 }
 
 
 #moon-phase {
     text-align: center;
+    /* border-bottom:  2px solid black; */
 }
 
 
 img.moon{
     display: inline-block;
-    width: 30%;
+    width: 25%;
     /* height: 100px; */
     vertical-align: middle;  /* or top, bottom, text-top, text-bottom, baseline */
 }
@@ -99,13 +104,46 @@ img.moon{
     display: inline-block;
     text-align: center;
     width: 34%;
+    vertical-align: middle; 
 }
 
 .moonLabel {
+    display: inline-block;
+    padding-right: 1rem;
+    margin-bottom: 0.5rem;
     font-size: 2rem;
 }
 
+#forecast {
+    text-align: center;
+}
 
+#forecast table {
+    display: inline-table; /* make table behave like inline for centering */
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+#forecast table th{
+    font-size: 1.2rem;
+    border: 1px solid #000;   /* all cell borders */
+    border-spacing: 0;         /* remove gaps */
+    padding: 4px 6px;
+}
+
+#forecast table td{
+    font-size: 1.2rem;
+    border: 1px solid #000;   /* all cell borders */
+    border-spacing: 0;         /* remove gaps */
+    padding: 4px 6px;
+}
+
+.weather-icon {
+    /* height: 10%; */
+    width: 2rem;
+    /* height: 14%; */
+}
 
 
 

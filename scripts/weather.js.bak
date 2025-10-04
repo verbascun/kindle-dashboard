@@ -68,76 +68,87 @@ Dashboard.renderWeather = function(data) {
 
   console.log (data);
 
+var table = document.createElement('table'); // Create table element
+
+var daysRow = document.createElement('tr'); // create days row
 
 var nextSevenDays = getNextSevenDays() // Get the names of the next 6 days
 
-var table = document.createElement('table'); // Create table element
-
-// Row definitions
-var rows = [
-  {
-    key: 'time',
-    labelFn: function(i) {
-      var dateArray = data.daily.time[i].split('-');
-      return dateArray[2] + "/" + dateArray[1] +
-        (i === 0 ? "<br>Today" : "<br>" + nextSevenDays[i]);
-    }
-  },
-  {
-    key: 'weathercode',
-    labelFn: function(i) {
-      var code = data.daily.weathercode[i];
-      var svgFile = WEATHER_SYMBOLS[code] || 'unknown.svg';
-      return '<img class="weather-icon" src="icons/weather/' + svgFile + '" alt="' + code + '">';
-    }
-  },
-  {
-    key: 'temperature_2m_max',
-    labelFn: function(i) { return data.daily.temperature_2m_max[i] + '°'; }
-  },
-  {
-    key: 'temperature_2m_min',
-    labelFn: function(i) { return data.daily.temperature_2m_min[i] + '°'; }
-  },
-  {
-    key: 'precipitation_sum',
-    labelFn: function(i) { return data.daily.precipitation_sum[i] + 'mm'; }
-  },
-  {
-    key: 'precipitation_probability_max',
-    labelFn: function(i) { return data.daily.precipitation_probability_max[i] + '%'; }
-  }
-];
-
-// Loop over row definitions
-
-for (var r = 0; r < rows.length; r++) {
-  var tr = document.createElement('tr');
-
-  for (var i = 0; i < days; i++) {
-    var cell;
-    if (r === 0) {
-      // First row = header
-      cell = document.createElement('th');
-    } else {
-      // Other rows = normal data
-      cell = document.createElement('td');
-    }
-    cell.innerHTML = rows[r].labelFn(i);
-    tr.appendChild(cell);
-  }
-
-  table.appendChild(tr);
+for (var i = 0; i < days; i++) {
+  var th = document.createElement('th');
+  var dateArray = data.daily.time[i].split('-')
+  if (i == 0) {
+    th.innerHTML = dateArray[2] 
+      + "/" + dateArray[1]
+      + "<br> Today";
+  } else {
+    th.innerHTML = dateArray[2] 
+      + "/" + dateArray[1]
+    + "<br>" + nextSevenDays[i];
+  } 
+  
+  daysRow.appendChild(th); // append th to row
 }
+table.appendChild(daysRow); // append row to table
+
+
+var tempMaxRow = document.createElement('tr'); // create max temp row
+
+for (var i = 0; i < days; i++) {
+  var th = document.createElement('th');
+  th.innerHTML = data.daily.temperature_2m_max[i] + '°'
+  tempMaxRow.appendChild(th); // append th to row
+  } 
+table.appendChild(tempMaxRow); // append row to table
+ 
+var tempMinRow = document.createElement('tr'); // create min temp row
+ 
+for (var i = 0; i < days; i++) {
+  var th = document.createElement('th');
+  th.innerHTML = data.daily.temperature_2m_min[i] + '°'
+  tempMinRow.appendChild(th); // append th to row
+  } 
+table.appendChild(tempMinRow); // append row to table
+
+
+var precipitationSumRow = document.createElement('tr'); // create precipitation sum row
+
+for (var i = 0; i < days; i++) {
+  var th = document.createElement('th');
+  th.innerHTML = data.daily.precipitation_sum[i] + ' mm'
+  precipitationSumRow.appendChild(th); // append th to row
+  } 
+table.appendChild(precipitationSumRow); // append row to table
+
+var precipitationProbabilityRow = document.createElement('tr'); // create precipitation sum row
+
+for (var i = 0; i < days; i++) {
+  var th = document.createElement('th');
+  th.innerHTML = data.daily.precipitation_probability_max[i] + '%'
+  precipitationProbabilityRow.appendChild(th); // append th to row
+  } 
+table.appendChild(precipitationProbabilityRow); // append row to table
 
 fc.appendChild(table);
+
+
+  // for (var i = 0; i < days; i++) {
+  //   var dayDiv = document.createElement('div');
+  //   dayDiv.className = 'forecast-day';
+  //   dayDiv.innerHTML =
+  //     '<p>' + data.daily.time[i] + '</p>' +
+  //     '<img src="/icons/weather/' + data.daily.weathercode[i] + '.svg" alt="">' +
+  //     '<p>' + data.daily.temperature_2m_max[i] + '° / ' + data.daily.temperature_2m_min[i] + '°</p>' +
+  //     '<p>' + data.daily.precipitation_sum[i] + ' mm</p>';
+  //   fc.appendChild(dayDiv);
+  // }
 };
 
 
 
 function getNextSevenDays() {
 // Day names in English
-var dayNamesEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+var dayNamesEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 // Optional: day names in Polish
 var dayNamesPl = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
